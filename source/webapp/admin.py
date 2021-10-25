@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from webapp.models import Comment, Technique, Category
+
+admin.site.register(Comment)
+admin.site.register(Technique)
+admin.site.register(Category)
