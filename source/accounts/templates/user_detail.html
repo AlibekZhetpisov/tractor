@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}User {{ user_obj.username }}{% endblock %}
+
+{% block content %}
+    <h1>{{ user_obj.username }}'s profile</h1>
+    {% if user_obj.profile.avatar %}
+        <img class="avatar" src="{{ user_obj.profile.avatar.url }}" width="250" height="250" alt="user picture">
+    {% else %}
+        <img src="https://image.shutterstock.com/image-vector/default-avatar-profile-icon-vector-260nw-1725655669.jpg"
+               width="179.33" alt="">
+    {% endif %}
+    <div class="Userdata">
+        <p class="userdata_text">Username: <b>{{ user_obj.username }}</b></p><br>
+        <p class="userdata_text">First name: <b>{{ user_obj.first_name }}</b></p><br>
+        <p class="userdata_text">Last name: <b>{{ user_obj.last_name }}</b></p><br>
+        <p class="userdata_text">Birth date: <b>{{ user_obj.profile.birth_date }}</b></p><br>
+        <p class="userdata_text">Email: <b>{{ user_obj.email }}</b></p><br>
+        <p class="userdata_text">Url to GitHub: <b>{{ user_obj.profile.url }}</b></p><br>
+        <p class="userdata_text">About Me: <b>{{ user_obj.profile.text }}</b></p><br>
+    </div>
+    {% if user == user_obj %}
+        <div class="profile_btn">
+            <a class="issue_create_btn" href="{% url 'accounts:change' user_obj.pk %}">Update data</a>
+            <a class="issue_create_btn" href="{% url 'accounts:change_password' user_obj.pk %}">Change password</a>
+        </div>
+    {% endif %}
+
+    <h2>Users project:</h2>
+{#    {% include 'partial/project_list.html' with project_list=projects %}#}
+{% endblock %}

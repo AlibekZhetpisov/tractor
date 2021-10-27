@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-import phonenumbers
 
 
 class Category(models.Model):
@@ -15,6 +14,7 @@ class Technique(models.Model):
     price_choices =[("hour", "час"), ("flight", "рейс"), ("km", "км"), ("cub.m.", "куб.м."), ("kg", "кг")]
     status_choices =[("free", "свободен"), ("busy", "занят")]
 
+    advertiser = models.ManyToManyField(User, verbose_name="Автор объявления", related_name="techniques")
     category = models.ForeignKey("webapp.Category", on_delete=models.CASCADE, verbose_name="Категория", related_name="Техника")
     name = models.CharField(max_length=150, verbose_name="Наименование")
     foto = models.ImageField(null=True, blank=True, upload_to='user_pics', verbose_name="Фото техники")
