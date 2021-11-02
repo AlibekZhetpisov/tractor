@@ -3,50 +3,55 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     {% if user.is_authenticated %}
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tractor</a>
+            <a class="navbar-brand" href="{% url "webapp:index" %}">
+                <img src="https://cs.global-trace.ru/DgABAIQAzQEYAczc_8P7Dw/dhDwQoyUPUlGbkjWl3TDbQ/sv/image/f7/92/53/624078/4587/KOMATSU%20WB97S%20300%D1%85300.png?1519743343"
+                     width="70px" height="70px" alt="">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
+
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url "webapp:index" %}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="btn btn-outline-info" href="{% url "webapp:index" %}">Все пользователи</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Услуги грзоперевозок
+                  <a class="btn btn-outline-info" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Услуги грзоперевозок ↓
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Фуры/Тягачи</a></li>
-                    <li><a class="dropdown-item" href="#">Грузовики</a></li>
-                    <li><a class="dropdown-item" href="#">Бытовые грузоперевозки</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:truck" %}">Фуры/Тягачи</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:lorry" %}">Грузовики</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:small_truck" %}">Бытовые грузоперевозки</a></li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Услуги спецтехники
+                  <a class="btn btn-outline-info" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Услуги спецтехники ↓
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Грзоперевозки</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:crane" %}">Краны</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:manipulator" %}">Манипуляторы</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:loader" %}">Погрузчики</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:excavator" %}">Эксковаторы</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:tractor" %}">Тракторы</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:build_technique" %}">Строительная техника</a></li>
+                    <li><a class="dropdown-item" href="{% url "webapp:other_technique" %}">Прочая техника</a></li>
                   </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page"
-                       href="{% url "accounts:profile" user.pk %}">Hello, {{ user.username }}</a>
+                  <a class="btn btn-outline-info" href="{% url "webapp:technique_create" %}">Добавить объявление</a>
+                </li>
+                <li class="nav-item">
+                    <a title="Личный кабинет" class="btn btn-outline-info" aria-current="page"
+                       href="{% url "accounts:profile" user.pk %}">Привет! {{ user.username }}</a>
 
                 </li>
                 <li class="nav-item">
                     <form class="logout" action="{% url "accounts:logout" %}?next={{ request.get_full_path }}" method="post">
                         {% csrf_token %}
-                        <button>Logout</button>
+                        <button class="btn btn-info">Выход</button>
                     </form>
                 </li>
     {% else %}

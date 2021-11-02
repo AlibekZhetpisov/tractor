@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title%} {{ technique.name }} {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="technique_detail">
+
+        <div class="technique_detail_foto">
+            {% if technique.foto %}
+                <img src="{{ technique.foto.url }}" class="card-img-top" alt="...">
+            {% else %}
+                <img src="https://thumbs.dreamstime.com/z/%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B8-%D1%81%D0%B8%D0%BC%D0%B2%D0%BE-%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5-%D1%8C%D0%BD%D0%BE%D0%B9-%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B8-44830229.jpg"
+                     width="500" height="375" alt="">
+            {% endif %}
+        </div>
+        <div class="technique_detail_data">
+            <p>{{ technique.name }}</p>
+            <p>Цена: {{ technique.price }} тенге за {{ technique.price_description }}</p>
+            <p>Свыше {{ technique.qty }} {{ technique.price_description }}(ов) {{ technique.sale_price }} тенге</p>
+            <p>Контакты: {{ technique.advertiser.profile.phone_number }}</p>
+            {% if request.user.username != technique.advertiser.username %}
+                <button class="btn btn-success">свободен</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Подать заявку
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Заявка на {{ technique.name }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{% url "webapp:order_create" technique.pk %}" method="post">
+                           {% csrf_token %}
+                            <div class="order_form">
+                                Начало заявки: <p><input type="datetime-local" name="start_time"></p>
+                                Конец заявки: <p><input type="datetime-local" name="send_time"></p>
+                                Описание:  <p><input type="text" name="description"></p>
+                                Предлагаемая цена: <p><input type="integer" name="offered_price"></p>
+                                <button class="btn btn-primary">Отправить заявку</button>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {% else %}
+                {% if technique.status == "свободен" %}
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                      {{ technique.status }}
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <form action="{% url "webapp:change_status" technique.pk %}" method="post">
+                              {% csrf_token %}
+                                <select class="form-select" aria-label="Default select example" name="status">
+                                      <option value="свободен">свободен</option>
+                                      <option value="занят">занят</option>
+                                </select>
+                                <button class="btn btn-primary">Поменять статус</button>
+                              </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                {% else %}
+
+
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                      {{ technique.status }}
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <form action="{% url "webapp:change_status" technique.pk %}" method="post">
+                              {% csrf_token %}
+                                <select class="form-select" aria-label="Default select example" name="status">
+                                      <option value="свободен">свободен</option>
+                                      <option value="занят">занят</option>
+                                </select>
+                                <button class="btn btn-primary">Поменять статус</button>
+                              </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                {% endif %}
+
+
+            {% endif %}
+        </div>
+        <div class="technique_detail_description">
+            <p>{{ technique.description }}</p>
+        </div>
+
+    </div>
+        {% if request.user.username == technique.advertiser.username %}
+            <form action="{% url "webapp:technique_delete" technique.pk %}">
+                <a class="btn btn-primary" href="{% url "webapp:technique_edit" technique.pk %}" class="card-link">Редактировать</a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                  Удалить
+                </button>
+            </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Вы хотите удалить:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    {{ technique.name }} ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <form action="{% url "webapp:technique_delete" technique.pk %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-primary btn-danger">Да</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endif %}
+
+
+    <hr>
+
+
+    <a class="btn btn-primary" style="margin-top: 5px" href="{% url "webapp:comment_create" technique.pk %}">Добавить комментарий</a>
+    {% if technique.comments %}
+        {% for comment in technique.comments.all %}
+            <div class="card" style="width: 48rem">
+              <div class="card-header">
+                {{ comment.author }}
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>{{ comment.text }}</p><br>
+                </blockquote>
+              </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endif %}
+{% endblock %}

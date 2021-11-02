@@ -16,12 +16,15 @@ class RegisterView(CreateView):
         return reverse("webapp:index")
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+class UserDetailView(UserPassesTestMixin, DetailView):
     model = get_user_model()
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
     paginate_related_by = 5
     paginate_related_orphans = 0
+
+    def test_func(self):
+        return self.request.user == self.get_object() or self.request.user.is_superuser
 
     def get_context_data(self, **kwargs):
         advertiser = self.object.techniques.order_by('is_active')
@@ -34,13 +37,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         return super().get_context_data(**kwargs)
 
 
-class UsersView(PermissionRequiredMixin, ListView):
+class UsersView(ListView):
     model = get_user_model()
-    template_name = "user_list.html"
+    template_name = "ads/index.html"
     context_object_name = "users"
     ordering = ["username"]
-
-    permission_required = "accounts.view_profile"
 
 
 class UserChangeView(UserPassesTestMixin, UpdateView):

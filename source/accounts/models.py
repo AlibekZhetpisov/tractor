@@ -7,4 +7,5 @@ class Profile(models.Model):
                                 verbose_name='Пользователь')
     birth_date = models.DateField(null=True, blank=True, verbose_name='Дата рождения')
     avatar = models.ImageField(null=True, blank=True, upload_to='user_pics', verbose_name='Аватар')
+    phone_number = models.CharField(max_length=150, verbose_name="Контактный телефон")
     text = models.TextField(max_length=3000, null=True, verbose_name="Text")

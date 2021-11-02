@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}Create page{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <form action="{% url "webapp:comment_create" pk %}" method="post">
+           {% csrf_token %}
+                <p>{{ form|crispy }}</p><br><br>
+            <button class="btn btn-primary">Добавить комментарий</button>
+        </form>
+    {% endif %}
+{% endblock %}

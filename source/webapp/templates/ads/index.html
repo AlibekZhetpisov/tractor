@@ -3,34 +3,43 @@
 {% block title %} Main page {% endblock %}
 
 {% block content %}
+{% include "partial/search_form.html" %}
+{% if user.is_authenticated %}
+    {% for user in users %}
 
-{% for user in users %}
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-         {% if user.profile.avatar %}
-          <img src="{{ user.profile.avatar.url }}" class="img-fluid rounded-start" alt="...">
-         {% else %}
-          <img src="https://image.shutterstock.com/image-vector/default-avatar-profile-icon-vector-260nw-1725655669.jpg"
-               width="179.33" height="179.33" alt="">
-         {% endif %}
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
-            {% for technique in user.techniques.all %}
-                <p class="card-text">
-                    <small class="text-muted">Техника: </small>
-                    {{ technique.category.name }}
-                    <small class="text-muted">Контакты: {{ technique.phone_number }}</small>
-                </p>
-            {% endfor %}
+        <div class="card mb-3" style="max-width: 1000px; border-radius: 65px">
+          <div class="row g-0">
+            <div class="col-md-4">
+                {% if user.profile.avatar %}
+                    <img class="card_avatar" src="{{ user.profile.avatar.url }}" class="card-img-top" alt="...">
+                {% else %}
+                    <img class="card_avatar" src="https://image.shutterstock.com/image-vector/default-avatar-profile-icon-vector-260nw-1725655669.jpg"
+                         class="card-img-top">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                  <p>
+                    <p>Контакты: {{ user.profile.phone_number }}</p>
+                    <small class="text-muted">Техника:</small>
+                    {% for technique in user.techniques.all %}
+                        <p class="card_data">
+                            {{ technique.category.title }}:
+                            {{ technique.name }}
+                            {% if technique.status == "свободен" %}
+                                <button class="card_btn btn-success">{{ technique.status }}</button>
+                            {% else %}
+                                <button class="card_btn btn-danger">{{ technique.status }}</button>
+                            {% endif %}
+                        </p>
+                    {% endfor %}
+                  </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-{% endfor %}
-
+    {% endfor %}
+{% endif %}
 {% endblock %}

@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}authentification{% endblock %}
+{% block title %}Авторизация{% endblock %}
 
 {% block content %}
 <div class="auth">
-    <br><h1>Login</h1>
+    <br><h1>Авторизация</h1><br>
     <form action="{% url "accounts:login" %}" method="post">
         {% csrf_token %}
         {% if has_error %}
-            <p>Wrong username or password</p>
+            <p>Не верный логин или пароль</p>
         {% endif %}
-        <p><input type="text" name="username" placeholder="Username"></p><br><br>
-        <p><input type="password" name="password" placeholder="Password"></p>
-        <br><br><button class="issue_create_btn">Login</button>
+        <p><input class="auth_input" type="text" name="username" placeholder="Username"></p><br><br>
+        <p><input class="auth_input" type="password" name="password" placeholder="Password"></p>
+        <br><br><button class="btn btn-primary">Войти</button>
     </form>
 </div>
 {% endblock %}

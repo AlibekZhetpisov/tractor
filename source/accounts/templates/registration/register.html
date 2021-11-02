@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Регистрация{% endblock %}
 
 {% block content %}
 <form class="forma_registr" action="{% url "accounts:register" %}" method="post">
     {% csrf_token %}
     {{ form|crispy }}
-    <button class="button">Register</button>
+    <button class="btn btn-primary">Регистрация</button>
 </form>
 {% endblock %}

@@ -3,29 +3,90 @@
 {% block title %}User {{ user_obj.username }}{% endblock %}
 
 {% block content %}
-    <h1>{{ user_obj.username }}'s profile</h1>
-    {% if user_obj.profile.avatar %}
-        <img class="avatar" src="{{ user_obj.profile.avatar.url }}" width="250" height="250" alt="user picture">
-    {% else %}
-        <img src="https://image.shutterstock.com/image-vector/default-avatar-profile-icon-vector-260nw-1725655669.jpg"
-               width="179.33" alt="">
-    {% endif %}
-    <div class="Userdata">
-        <p class="userdata_text">Username: <b>{{ user_obj.username }}</b></p><br>
-        <p class="userdata_text">First name: <b>{{ user_obj.first_name }}</b></p><br>
-        <p class="userdata_text">Last name: <b>{{ user_obj.last_name }}</b></p><br>
-        <p class="userdata_text">Birth date: <b>{{ user_obj.profile.birth_date }}</b></p><br>
-        <p class="userdata_text">Email: <b>{{ user_obj.email }}</b></p><br>
-        <p class="userdata_text">Url to GitHub: <b>{{ user_obj.profile.url }}</b></p><br>
-        <p class="userdata_text">About Me: <b>{{ user_obj.profile.text }}</b></p><br>
-    </div>
-    {% if user == user_obj %}
-        <div class="profile_btn">
-            <a class="issue_create_btn" href="{% url 'accounts:change' user_obj.pk %}">Update data</a>
-            <a class="issue_create_btn" href="{% url 'accounts:change_password' user_obj.pk %}">Change password</a>
-        </div>
-    {% endif %}
+    {% if user.is_authenticated %}
+        {% if user == user_obj %}
+            <h1>Ваш профиль:</h1>
+            <div class="user_avatar">
+                {% if user_obj.profile.avatar %}
+                    <img src="{{ user_obj.profile.avatar.url }}" width="150" height="150" alt="user picture">
+                {% else %}
+                    <img src="https://image.shutterstock.com/image-vector/default-avatar-profile-icon-vector-260nw-1725655669.jpg"
+                           width="150" height="150" alt="">
+                {% endif %}
+            </div>
+            <div class="user_data">
+                Логин: <b>{{ user_obj.username }}</b><br>
+                Имя: <b>{{ user_obj.first_name }}</b><br>
+                Фамилия: <b>{{ user_obj.last_name }}</b><br>
+                Дата рождения: <b>{{ user_obj.profile.birth_date }}</b><br>
+                Контакный номер: <b>{{ user_obj.profile.phone_number }}</b><br>
+                Email: <b>{{ user_obj.email }}</b><br>
+                Обо мне: <b>{{ user_obj.profile.text }}</b><br>
+            </div>
+                <div class="profile_btn">
+                    <a href="{% url 'accounts:change' user_obj.pk %}">Редактировать данные</a><br>
+                    <a style="color: green" href="{% url 'accounts:change_password' user_obj.pk %}">Изменить пароль</a>
+                </div>
 
-    <h2>Users project:</h2>
-{#    {% include 'partial/project_list.html' with project_list=projects %}#}
+            <h2>Ваши объявления:</h2>
+            {% for technique in user_obj.techniques.all %}
+                <div class="profile_technique">
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                {{ technique.name }}{{ technique.price }} тенге за {{ technique.price_description }} {{ technique.status }}
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                          <a href="{% url "webapp:technique_detail" technique.pk %}">Перейти к объявлению</a>
+                              {% for order in technique.orders.all %}
+                                  <div class="profile_order">
+                                      Заявка от: <strong class="profile_order_data">{{ order.author.username }}</strong>
+                                      Телефон: <strong class="profile_order_data">{{ order.author.profile.phone_number }}</strong>
+                                      Начало: <strong class="profile_order_data">{{ order.start_time }}</strong>
+                                      Конец: <strong class="profile_order_data">{{ order.end_time }}</strong>
+                                      <code>Предлагаемая цена: {{ order.offered_price }}</code>
+                                      <p class="profile_order_text">
+                                          Описание: <strong class="profile_order_data">{{ order.description }}</strong>
+                                          {% if request.user.username == user_obj.username %}
+                                            <form action="{% url "webapp:order_delete" technique.pk %}">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4">
+                                                  Удалить
+                                                </button>
+                                            </form>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Вы хотите удалить заявку?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                                    <form action="{% url "webapp:order_delete" technique.pk %}" method="post">
+                                                        {% csrf_token %}
+                                                        <button class="btn btn-primary btn-danger">Да</button>
+                                                    </form>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        {% endif %}
+                                      </p><hr>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+
+            {% endfor %}
+        {% endif %}
+    {% endif %}
 {% endblock %}

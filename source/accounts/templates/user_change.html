@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
-{% block title %}User's update{% endblock %}
+{% block title %}Редоктирование{% endblock %}
 
 {% block content %}
-    <h1>Update user's profile</h1>
-    <form action="{% url 'accounts:change' user_obj.pk %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        {{ profile_form|crispy }}
-        <button>Edit</button>
-    </form>
+    {% if user.is_authenticated %}
+        <h1>Редактировать профайл</h1>
+        <form action="{% url 'accounts:change' user_obj.pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {{ profile_form|crispy }}
+            <button>Редактировать</button>
+        </form>
+    {% endif %}
 {% endblock %}

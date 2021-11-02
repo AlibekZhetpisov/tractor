@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}Редактировать{{ technique.name }}{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Редактировать {{ technique.name }}</h1>
+        <form action="{% url "webapp:technique_edit" technique.pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <p>{{ form|crispy }}</p>
+            <button class="btn btn-primary">Редактировать</button>
+        </form>
+    {% endif %}
+{% endblock %}
