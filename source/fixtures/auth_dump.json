@@ -1,0 +1,56 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$orGAN8vz2sYlzu05RRSNwD$pqe3ICb9KqgRGr0CkNx33g5PrY60N/iwJvt04B2WHT0=",
+    "last_login": "2021-11-02T10:36:10.098Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Админ",
+    "last_name": "Админыч",
+    "email": "qwdd@dde.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-25T18:29:45Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$CpdqAW8qC4TFysXR3a2mhn$siRl1EMDt08t7zjFRT+cUsoaYTu274RxIIgTcSHNA7A=",
+    "last_login": "2021-11-02T07:03:26.690Z",
+    "is_superuser": false,
+    "username": "Bob",
+    "first_name": "Bob",
+    "last_name": "Soap",
+    "email": "bobobo@bob.bb",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-27T14:13:36Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$ekUPIy1HwihbKr5eHpRkZS$evGJvsJXxIL9LXkAYq3bQPzrP/SYPOaIEEnoXrXMhE4=",
+    "last_login": "2021-11-02T10:36:43.994Z",
+    "is_superuser": false,
+    "username": "John",
+    "first_name": "John",
+    "last_name": "Whick",
+    "email": "wick@neo.matr",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-11-02T07:04:31Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

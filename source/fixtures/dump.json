@@ -1,0 +1,313 @@
+[
+{
+  "model": "webapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "excavator",
+    "title": "Экскаватор"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "loader",
+    "title": "Погрузчик"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "truck crane",
+    "title": "Кран"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 4,
+  "fields": {
+    "name": "truck",
+    "title": "Тягач"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 5,
+  "fields": {
+    "name": "lorry",
+    "title": "Грузовик"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 6,
+  "fields": {
+    "name": "small track",
+    "title": "Бытовой грузовик"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 7,
+  "fields": {
+    "name": "manipulator",
+    "title": "Манипулятор"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 8,
+  "fields": {
+    "name": "build technique",
+    "title": "Строительная техника"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 9,
+  "fields": {
+    "name": "tractor",
+    "title": "Трактор"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 10,
+  "fields": {
+    "name": "other technique",
+    "title": "Прочая техника"
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 1,
+  "fields": {
+    "advertiser": 1,
+    "category": 3,
+    "name": "Автокран XCMG USED XCMG QY25KA 25TON TRUCK CRANE",
+    "foto": "user_pics/crane.jpg",
+    "price": "14500",
+    "price_description": "час",
+    "description": "- Автокран 2017года, \r\n- Грузоподъемность 25 тонн,\r\n- Радиус охвата рабочей зоны – 3000 мм,\r\n- Радиус поворота хвостовой части поворотной платформы – 3065 мм,\r\n- Подъемный момент – 961 кН м,\r\n- Параметры стрелы: длина – от 10,4 до 39,5 м; длина с вспомогательной стрелой – 47,8 м,\r\n- Продольное и поперечное расстояние выносных опор – 5,14 и 6 м\r\n- Масса – 31,7 т\r\n- Нагрузка на передние колеса – 6,6 т\r\n- Нагрузка на задние колеса – 25,2 т\r\n- Тип двигателя – дизельный, SDEC SC9DF290Q4\r\n- Мощность – 290 лошадиных сил\r\n- Крутящий момент – 1112 Н/м\r\n- Транспортная скорость – 80 км/час\r\n- Радиус разворота – 22 м\r\n- Дорожный просвет – 260 мм\r\n- Расход топлива – 37 л/100 км\r\n- Время на подъем стрелы – 68 с\r\n- Время для полного выдвижения стрелы – 150 с\r\n- Скорость поворота – 2,5 об/мин\r\n- Скорость подъема главной/вспомогательной лебедки без груза – 125 м/мин\r\n- Габариты, мм: Длина – 12300, Ширина – 2500, Высота – 3380.",
+    "status": "свободен",
+    "qty": 5,
+    "sale_price": "10000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 2,
+  "fields": {
+    "advertiser": 1,
+    "category": 3,
+    "name": "Автокран ЧКД AD30-TATRA",
+    "foto": "user_pics/Autojerab-AD30.jpg",
+    "price": "20000",
+    "price_description": "час",
+    "description": "Размеры\t10700 х 2500 х 3700 мм\r\nНагрузка мостов:\t\r\nпередний\t8000 кг\r\nзадний\t2 x 11500 кг\r\nГрузоподъемность\t30000 кг\r\nДлина основной стрелы зас/выс\t9500/26000 мм\r\nЗащитное приспособление\tСЛИ 05\r\nАвтомобильное шасси\tTATRA T 815 250 J 21 30.270 6 x 6.2 / бaзa 4 090 мм\r\nНаибольшая транспортная скорость\t80 км/ч\r\nМощность двигателя\t230 кВт\r\nДлина стрелы с гуском\t33900/38900 мм\r\nГрузоподъемность крана - общая\t30500 кг",
+    "status": "занят",
+    "qty": 5,
+    "sale_price": "18000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 3,
+  "fields": {
+    "advertiser": 2,
+    "category": 3,
+    "name": "32r323rf3",
+    "foto": "",
+    "price": "15000",
+    "price_description": "час",
+    "description": "cdsvddsv",
+    "status": "свободен",
+    "qty": 4,
+    "sale_price": "12000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 8,
+  "fields": {
+    "advertiser": 1,
+    "category": 1,
+    "name": "DF-450",
+    "foto": "",
+    "price": "20000",
+    "price_description": "час",
+    "description": "свымывмв",
+    "status": "свободен",
+    "qty": 5,
+    "sale_price": "18000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 10,
+  "fields": {
+    "advertiser": 3,
+    "category": 7,
+    "name": "ISUZU",
+    "foto": "user_pics/isuzu19092018_4__hyxvBe5.jpg",
+    "price": "10000",
+    "price_description": "час",
+    "description": "Грузоподъемность\t4665 / 4640 / 4630кг\r\nПолная масса\t7500 кг\r\nМощность\t155 л. с.\r\nТип двигателя\tISUZU 4HK1, дизель\r\nОбъем двигателя \t5,193 куб.см\r\nТопливный бак, объём\t100 л\r\nКПП\tISUZU MYY6S,\r\n6-ступенчатая механическая коробка передач\r\nКолесная база\t3815 / 4175 / 4475 мм\r\nПодвеска (передняя/задняя)\t\r\nРессорная / рессорная\r\n\r\nТормоза (спереди/сзади)\tбарабанные\r\nШины\t215/75R17.5",
+    "status": "свободен",
+    "qty": 5,
+    "sale_price": "9000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 12,
+  "fields": {
+    "advertiser": 3,
+    "category": 6,
+    "name": "Газель",
+    "foto": "user_pics/unnamed.jpg",
+    "price": "8000",
+    "price_description": "час",
+    "description": "Gazel",
+    "status": "свободен",
+    "qty": 4,
+    "sale_price": "7000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 1,
+  "fields": {
+    "technique": 1,
+    "author": 2,
+    "start_time": "2021-10-03T06:00:00Z",
+    "end_time": "2021-10-30T12:00:00Z",
+    "description": "5 поддонов кирпичей",
+    "offered_price": "40000"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 2,
+  "fields": {
+    "technique": 1,
+    "author": 1,
+    "start_time": "2021-11-01T10:00:00Z",
+    "end_time": null,
+    "description": "Cola",
+    "offered_price": "50000"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 3,
+  "fields": {
+    "technique": 3,
+    "author": 2,
+    "start_time": "2021-11-01T10:08:00Z",
+    "end_time": null,
+    "description": "Radio",
+    "offered_price": "50000"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 4,
+  "fields": {
+    "technique": 1,
+    "author": 1,
+    "start_time": "2021-11-03T12:42:00Z",
+    "end_time": null,
+    "description": "Radio",
+    "offered_price": "50000"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 1,
+  "fields": {
+    "technique": 2,
+    "author": 1,
+    "text": "fewegegwegtgr"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 2,
+  "fields": {
+    "technique": 3,
+    "author": 2,
+    "text": "dwff"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 3,
+  "fields": {
+    "technique": 2,
+    "author": 1,
+    "text": "dcdsvsdbsdbfd"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$orGAN8vz2sYlzu05RRSNwD$pqe3ICb9KqgRGr0CkNx33g5PrY60N/iwJvt04B2WHT0=",
+    "last_login": "2021-11-02T10:36:10.098Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Админ",
+    "last_name": "Админыч",
+    "email": "qwdd@dde.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-25T18:29:45Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$CpdqAW8qC4TFysXR3a2mhn$siRl1EMDt08t7zjFRT+cUsoaYTu274RxIIgTcSHNA7A=",
+    "last_login": "2021-11-02T07:03:26.690Z",
+    "is_superuser": false,
+    "username": "Bob",
+    "first_name": "Bob",
+    "last_name": "Soap",
+    "email": "bobobo@bob.bb",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-27T14:13:36Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$ekUPIy1HwihbKr5eHpRkZS$evGJvsJXxIL9LXkAYq3bQPzrP/SYPOaIEEnoXrXMhE4=",
+    "last_login": "2021-11-02T10:36:43.994Z",
+    "is_superuser": false,
+    "username": "John",
+    "first_name": "John",
+    "last_name": "Whick",
+    "email": "wick@neo.matr",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-11-02T07:04:31Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
