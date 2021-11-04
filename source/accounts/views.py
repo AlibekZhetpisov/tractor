@@ -1,10 +1,13 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.core.paginator import Paginator
+from django.shortcuts import redirect
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from accounts.forms import RegistrationForm, ProfileChangeForm, UserChangeForm
 from django.urls import reverse
+
+from accounts.models import Profile
 
 
 class RegisterView(CreateView):
@@ -12,8 +15,11 @@ class RegisterView(CreateView):
     template_name = "registration/register.html"
     form_class = RegistrationForm
 
-    def get_success_url(self):
-        return reverse("webapp:index")
+    def form_valid(self, form):
+        user = form.save()
+        Profile.objects.create(user=user)
+        login(self.request, user)
+        return redirect("webapp:index")
 
 
 class UserDetailView(UserPassesTestMixin, DetailView):

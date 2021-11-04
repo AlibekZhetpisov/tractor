@@ -19,7 +19,7 @@
 2) virtualenv/venv - виртуальное окружение
 
 *Запускаем виртуальное окружение*
-3) .venv/bin/activate
+3) . venv/bin/activate
 
 *Устанавливаем Django*
 
@@ -48,3 +48,5 @@
 *Запускаем проект*
 
 13) python manage.py runserver
+
+**Пароли пользователей: Ss123456**

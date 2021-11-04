@@ -182,6 +182,57 @@
   }
 },
 {
+  "model": "webapp.technique",
+  "pk": 13,
+  "fields": {
+    "advertiser": 7,
+    "category": 7,
+    "name": "ISUZU",
+    "foto": "user_pics/isuzu19092018_4__exDJGWg.jpg",
+    "price": "15000",
+    "price_description": "час",
+    "description": "Грузоподъемность 4665 / 4640 / 4630кг Полная масса 7500 кг Мощность 155 л. с. Тип двигателя ISUZU 4HK1, дизель Объем двигателя 5,193 куб.см Топливный бак, объём 100 л КПП ISUZU MYY6S, 6-ступенчатая механическая коробка передач Колесная база 3815 / 4175 / 4475 мм Подвеска (передняя/задняя) Рессорная / рессорная Тормоза (спереди/сзади) барабанные Шины 215/75R17.5",
+    "status": "свободен",
+    "qty": 4,
+    "sale_price": "13000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 14,
+  "fields": {
+    "advertiser": 8,
+    "category": 6,
+    "name": "Gazel",
+    "foto": "user_pics/unnamed_0PRNk7K.jpg",
+    "price": "8000",
+    "price_description": "час",
+    "description": "Газель 3 м. \r\nгрузоподъемность - 2 т.",
+    "status": "свободен",
+    "qty": 3,
+    "sale_price": "7000",
+    "is_active": true
+  }
+},
+{
+  "model": "webapp.technique",
+  "pk": 15,
+  "fields": {
+    "advertiser": 9,
+    "category": 2,
+    "name": "Loader",
+    "foto": "user_pics/Loader.jpg",
+    "price": "10000",
+    "price_description": "час",
+    "description": "Loader",
+    "status": "свободен",
+    "qty": 5,
+    "sale_price": "8000",
+    "is_active": true
+  }
+},
+{
   "model": "webapp.order",
   "pk": 1,
   "fields": {
@@ -230,6 +281,18 @@
   }
 },
 {
+  "model": "webapp.order",
+  "pk": 5,
+  "fields": {
+    "technique": 15,
+    "author": 9,
+    "start_time": "2021-11-05T15:00:00Z",
+    "end_time": null,
+    "description": "Убрать мусор",
+    "offered_price": "32000"
+  }
+},
+{
   "model": "webapp.comment",
   "pk": 1,
   "fields": {
@@ -261,7 +324,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$260000$orGAN8vz2sYlzu05RRSNwD$pqe3ICb9KqgRGr0CkNx33g5PrY60N/iwJvt04B2WHT0=",
-    "last_login": "2021-11-02T10:36:10.098Z",
+    "last_login": "2021-11-04T08:55:00.580Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "Админ",
@@ -276,28 +339,28 @@
 },
 {
   "model": "auth.user",
-  "pk": 2,
+  "pk": 7,
   "fields": {
-    "password": "pbkdf2_sha256$260000$CpdqAW8qC4TFysXR3a2mhn$siRl1EMDt08t7zjFRT+cUsoaYTu274RxIIgTcSHNA7A=",
-    "last_login": "2021-11-02T07:03:26.690Z",
+    "password": "pbkdf2_sha256$260000$lEHr5y4EDmprlYomYFyWnl$2XaeUWU5VcAt2pzt8L8ZW7/RAaN/2mtf45X4DOi2zho=",
+    "last_login": "2021-11-04T08:37:35.526Z",
     "is_superuser": false,
-    "username": "Bob",
-    "first_name": "Bob",
-    "last_name": "Soap",
-    "email": "bobobo@bob.bb",
+    "username": "Garry",
+    "first_name": "Garry",
+    "last_name": "",
+    "email": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2021-10-27T14:13:36Z",
+    "date_joined": "2021-11-04T08:37:35.038Z",
     "groups": [],
     "user_permissions": []
   }
 },
 {
   "model": "auth.user",
-  "pk": 3,
+  "pk": 8,
   "fields": {
-    "password": "pbkdf2_sha256$260000$ekUPIy1HwihbKr5eHpRkZS$evGJvsJXxIL9LXkAYq3bQPzrP/SYPOaIEEnoXrXMhE4=",
-    "last_login": "2021-11-02T10:36:43.994Z",
+    "password": "pbkdf2_sha256$260000$0SjXjxlyR2LnqYdv1XyHeX$5VIwKKkXlSiWTHLqV0scIVQDS4D8ttRsbsGxiGT7Xdo=",
+    "last_login": "2021-11-04T08:45:00.101Z",
     "is_superuser": false,
     "username": "John",
     "first_name": "John",
@@ -305,7 +368,25 @@
     "email": "wick@neo.matr",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2021-11-02T07:04:31Z",
+    "date_joined": "2021-11-04T08:44:59.622Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$rDYcT4mD9unJhwxLxxFFRd$3RZfmV4bgVDO5+MzXZbQw0wuNR+WJ4tottkClXJi+h8=",
+    "last_login": "2021-11-04T08:51:00.234Z",
+    "is_superuser": false,
+    "username": "Bob",
+    "first_name": "Bob",
+    "last_name": "Sapp",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-11-04T08:50:59.772Z",
     "groups": [],
     "user_permissions": []
   }

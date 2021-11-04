@@ -56,8 +56,10 @@
                 </li>
     {% else %}
                 <li class="nav-item">
-                    <a href="{% url "accounts:login" %}?next={{ request.get_full_path }}">Login</a>
-                    <a href="{% url "accounts:register" %}">Sign up</a>
+                    <p class="login_btn">
+                        <a class="btn btn-primary" href="{% url "accounts:login" %}?next={{ request.get_full_path }}">Login</a>
+                        <a class="btn btn-success" href="{% url "accounts:register" %}">Sign up</a>
+                    </p>
               </ul>
             </div>
           </div>
